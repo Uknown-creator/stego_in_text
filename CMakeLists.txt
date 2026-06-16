@@ -14,5 +14,4 @@ find_package(doctest CONFIG REQUIRED)
 
 add_subdirectory(client)
 
-# После добавления каталога server/ с собственным CMakeLists.txt раскомментируйте строку ниже:
-# add_subdirectory(server)
+add_subdirectory(server)
