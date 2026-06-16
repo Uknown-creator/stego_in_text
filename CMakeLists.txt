@@ -7,7 +7,6 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 
 enable_testing()
 
-# Третьесторонние библиотеки приходят из vcpkg (manifest-режим, см. vcpkg.json).
 find_package(cryptopp CONFIG REQUIRED)
 find_package(ixwebsocket CONFIG REQUIRED)
 find_package(nlohmann_json CONFIG REQUIRED)
@@ -15,6 +14,5 @@ find_package(doctest CONFIG REQUIRED)
 
 add_subdirectory(client)
 
-# Сервер реализует участник 2 (см. server/REQUIREMENTS.md). После добавления
-# каталога server/ с собственным CMakeLists.txt раскомментируйте строку ниже:
+# После добавления каталога server/ с собственным CMakeLists.txt раскомментируйте строку ниже:
 # add_subdirectory(server)
