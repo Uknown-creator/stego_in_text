@@ -1,0 +1,208 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ru">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.16.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Стеганография в тексте: Класс stego::AesCipher</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Стеганография в тексте
+   </div>
+   <div id="projectbrief">DH + AES, шифртекст словами русского языка через WebSocket</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.16.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Поиск',true);
+  $(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('classstego_1_1_aes_cipher.html','','classstego_1_1_aes_cipher-members'); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Загрузка...</div>
+<div class="SRStatus" id="Searching">Поиск...</div>
+<div class="SRStatus" id="NoMatches">Не найдено</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">Класс stego::AesCipher</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>Симметричный шифр AES-256 в режиме GCM (аутентифицированное шифрование).  
+ <a href="#details">Подробнее...</a></p>
+
+<p><code>#include &lt;<a class="el" href="crypto_8hpp_source.html">crypto.hpp</a>&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Открытые члены</h2></td></tr>
+<tr class="memitem:afed8a81bdab8094676afa1e4c84c5da7" id="r_afed8a81bdab8094676afa1e4c84c5da7"><td class="memItemLeft">std::vector&lt; std::uint8_t &gt;&#160;</td><td class="memItemRight"><a class="el" href="#afed8a81bdab8094676afa1e4c84c5da7">encrypt</a> (const std::vector&lt; std::uint8_t &gt; &amp;plain, const CryptoPP::SecByteBlock &amp;key) const</td></tr>
+<tr class="memdesc:afed8a81bdab8094676afa1e4c84c5da7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Шифрует данные ключом AES-256.  <br /></td></tr>
+<tr class="memitem:af437d8171c68621f13290ae95e4607f2" id="r_af437d8171c68621f13290ae95e4607f2"><td class="memItemLeft">std::vector&lt; std::uint8_t &gt;&#160;</td><td class="memItemRight"><a class="el" href="#af437d8171c68621f13290ae95e4607f2">decrypt</a> (const std::vector&lt; std::uint8_t &gt; &amp;cipher, const CryptoPP::SecByteBlock &amp;key) const</td></tr>
+<tr class="memdesc:af437d8171c68621f13290ae95e4607f2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Расшифровывает данные, зашифрованные методом <a class="el" href="#afed8a81bdab8094676afa1e4c84c5da7" title="Шифрует данные ключом AES-256.">encrypt()</a>.  <br /></td></tr>
+</table>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Подробное описание</h2>
+<div class="textblock"><p>Симметричный шифр AES-256 в режиме GCM (аутентифицированное шифрование). </p>
+<p>Вектор инициализации (IV) генерируется случайно при каждом вызове <a class="el" href="#afed8a81bdab8094676afa1e4c84c5da7" title="Шифрует данные ключом AES-256.">encrypt()</a> и помещается в начало результата, чтобы <a class="el" href="#af437d8171c68621f13290ae95e4607f2" title="Расшифровывает данные, зашифрованные методом encrypt().">decrypt()</a> мог его извлечь. </p>
+</div><a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Методы</h2>
+<a id="af437d8171c68621f13290ae95e4607f2" name="af437d8171c68621f13290ae95e4607f2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af437d8171c68621f13290ae95e4607f2">&#9670;&#160;</a></span>decrypt()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt; std::uint8_t &gt; stego::AesCipher::decrypt </td>
+          <td>(</td>
+          <td class="paramtype">const std::vector&lt; std::uint8_t &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>cipher</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const CryptoPP::SecByteBlock &amp;</td>          <td class="paramname"><span class="paramname"><em>key</em></span>&#160;) const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Расшифровывает данные, зашифрованные методом <a class="el" href="#afed8a81bdab8094676afa1e4c84c5da7" title="Шифрует данные ключом AES-256.">encrypt()</a>. </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">cipher</td><td>Байты вида [IV || шифртекст || тег]. </td></tr>
+    <tr><td class="paramname">key</td><td>Ключ длиной 32 байта, совпадающий с ключом шифрования. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Возвращает</dt><dd>Восстановленные открытые данные. </dd></dl>
+<dl class="exception"><dt>Исключения</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname"><a class="el" href="classstego_1_1_crypto_error.html" title="Ошибки криптографических операций (DH-обмен, AES, хэширование).">CryptoError</a></td><td>при неверном ключе, повреждении данных или теге. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="afed8a81bdab8094676afa1e4c84c5da7" name="afed8a81bdab8094676afa1e4c84c5da7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afed8a81bdab8094676afa1e4c84c5da7">&#9670;&#160;</a></span>encrypt()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt; std::uint8_t &gt; stego::AesCipher::encrypt </td>
+          <td>(</td>
+          <td class="paramtype">const std::vector&lt; std::uint8_t &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>plain</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const CryptoPP::SecByteBlock &amp;</td>          <td class="paramname"><span class="paramname"><em>key</em></span>&#160;) const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Шифрует данные ключом AES-256. </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">plain</td><td>Открытые данные произвольной длины. </td></tr>
+    <tr><td class="paramname">key</td><td>Ключ длиной 32 байта (см. <a class="el" href="classstego_1_1_diffie_hellman.html#adac14e45337b758e84e32ab6f1178e8d" title="Выводит 32-байтный ключ AES из общего секрета DH через SHA-256.">DiffieHellman::derive_aes_key</a>). </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Возвращает</dt><dd>Байты вида [IV || шифртекст || тег аутентификации]. </dd></dl>
+<dl class="exception"><dt>Исключения</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname"><a class="el" href="classstego_1_1_crypto_error.html" title="Ошибки криптографических операций (DH-обмен, AES, хэширование).">CryptoError</a></td><td>при неверной длине ключа или сбое шифрования. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<hr/>Объявления и описания членов классов находятся в файлах:<ul>
+<li>client/include/<a class="el" href="crypto_8hpp_source.html">crypto.hpp</a></li>
+<li>client/src/<a class="el" href="crypto_8cpp.html">crypto.cpp</a></li>
+</ul>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<div id="page-nav" class="page-nav-panel">
+<div id="page-nav-resize-handle"></div>
+<div id="page-nav-tree">
+<div id="page-nav-contents">
+</div><!-- page-nav-contents -->
+</div><!-- page-nav-tree -->
+</div><!-- page-nav -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="namespacestego.html">stego</a></li><li class="navelem"><a href="classstego_1_1_aes_cipher.html">AesCipher</a></li>
+    <li class="footer">Создано системой <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.16.1 </li>
+  </ul>
+</div>
+</body>
+</html>

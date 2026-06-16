@@ -1,0 +1,19 @@
+# Build output
+/build/
+/out/
+
+# vcpkg
+/vcpkg_installed/
+
+# Сгенерированная HTML-документация (docs/html) намеренно НЕ игнорируется:
+# по требованиям «на 10» она должна присутствовать в репозитории.
+
+# Runtime artifacts
+*.key
+*.o
+*.obj
+
+# Editor / OS
+.DS_Store
+.vscode/
+.idea/

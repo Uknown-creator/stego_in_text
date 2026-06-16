@@ -1,0 +1,11 @@
+{
+  "name": "stego-in-text",
+  "version-string": "1.0.0",
+  "description": "Steganography in text: DH key agreement + AES, ciphertext encoded as Russian words over WebSocket.",
+  "dependencies": [
+    "cryptopp",
+    "ixwebsocket",
+    "nlohmann-json",
+    "doctest"
+  ]
+}

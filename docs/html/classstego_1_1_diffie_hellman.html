@@ -1,0 +1,319 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ru">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.16.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Стеганография в тексте: Класс stego::DiffieHellman</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Стеганография в тексте
+   </div>
+   <div id="projectbrief">DH + AES, шифртекст словами русского языка через WebSocket</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.16.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Поиск',true);
+  $(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('classstego_1_1_diffie_hellman.html','','classstego_1_1_diffie_hellman-members'); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Загрузка...</div>
+<div class="SRStatus" id="Searching">Поиск...</div>
+<div class="SRStatus" id="NoMatches">Не найдено</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">Класс stego::DiffieHellman</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>Участник обмена по протоколу Диффи-Хеллмана.  
+ <a href="#details">Подробнее...</a></p>
+
+<p><code>#include &lt;<a class="el" href="crypto_8hpp_source.html">crypto.hpp</a>&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Открытые члены</h2></td></tr>
+<tr class="memitem:ac61fef7e646093020f8d3b591580dd3a" id="r_ac61fef7e646093020f8d3b591580dd3a"><td class="memItemLeft">&#160;</td><td class="memItemRight"><a class="el" href="#ac61fef7e646093020f8d3b591580dd3a">DiffieHellman</a> ()</td></tr>
+<tr class="memdesc:ac61fef7e646093020f8d3b591580dd3a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Создаёт участника и генерирует новую пару ключей.  <br /></td></tr>
+<tr class="memitem:a694c731c80bba8973cc003d8b7eba4b0" id="r_a694c731c80bba8973cc003d8b7eba4b0"><td class="memItemLeft">std::string&#160;</td><td class="memItemRight"><a class="el" href="#a694c731c80bba8973cc003d8b7eba4b0">public_key_hex</a> () const</td></tr>
+<tr class="memdesc:a694c731c80bba8973cc003d8b7eba4b0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Возвращает публичный ключ участника в шестнадцатеричном виде.  <br /></td></tr>
+<tr class="memitem:a21f8c73b4b6e727ed179c447569cb93b" id="r_a21f8c73b4b6e727ed179c447569cb93b"><td class="memItemLeft">CryptoPP::SecByteBlock&#160;</td><td class="memItemRight"><a class="el" href="#a21f8c73b4b6e727ed179c447569cb93b">compute_shared</a> (const std::string &amp;peer_public_hex) const</td></tr>
+<tr class="memdesc:a21f8c73b4b6e727ed179c447569cb93b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Вычисляет общий секрет с публичным ключом другого участника.  <br /></td></tr>
+<tr class="memitem:aac62d48190ab3558cc351539537dc751" id="r_aac62d48190ab3558cc351539537dc751"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#aac62d48190ab3558cc351539537dc751">save_private</a> (const std::filesystem::path &amp;path) const</td></tr>
+<tr class="memdesc:aac62d48190ab3558cc351539537dc751"><td class="mdescLeft">&#160;</td><td class="mdescRight">Сохраняет приватный ключ участника в файл (hex, UTF-8).  <br /></td></tr>
+<tr class="memitem:a0042e4d3bef94228d8d93aa2346fe1cd" id="r_a0042e4d3bef94228d8d93aa2346fe1cd"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a0042e4d3bef94228d8d93aa2346fe1cd">load_private</a> (const std::filesystem::path &amp;path)</td></tr>
+<tr class="memdesc:a0042e4d3bef94228d8d93aa2346fe1cd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Загружает приватный ключ из файла и восстанавливает публичный.  <br /></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-pub-static-methods" class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
+Открытые статические члены</h2></td></tr>
+<tr class="memitem:adac14e45337b758e84e32ab6f1178e8d" id="r_adac14e45337b758e84e32ab6f1178e8d"><td class="memItemLeft">static CryptoPP::SecByteBlock&#160;</td><td class="memItemRight"><a class="el" href="#adac14e45337b758e84e32ab6f1178e8d">derive_aes_key</a> (const CryptoPP::SecByteBlock &amp;shared)</td></tr>
+<tr class="memdesc:adac14e45337b758e84e32ab6f1178e8d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Выводит 32-байтный ключ AES из общего секрета DH через SHA-256.  <br /></td></tr>
+</table>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Подробное описание</h2>
+<div class="textblock"><p>Участник обмена по протоколу Диффи-Хеллмана. </p>
+<p>Использует фиксированную группу MODP из RFC 3526 (2048 бит). Приватный ключ хранится в объекте и может быть сохранён/загружен из файла, что даёт клиенту устойчивую криптографическую личность ("файл с ключом"). </p>
+</div><a name="doc-constructors" id="doc-constructors"></a><h2 id="header-doc-constructors" class="groupheader">Конструктор(ы)</h2>
+<a id="ac61fef7e646093020f8d3b591580dd3a" name="ac61fef7e646093020f8d3b591580dd3a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac61fef7e646093020f8d3b591580dd3a">&#9670;&#160;</a></span>DiffieHellman()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">stego::DiffieHellman::DiffieHellman </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Создаёт участника и генерирует новую пару ключей. </p>
+<dl class="exception"><dt>Исключения</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname"><a class="el" href="classstego_1_1_crypto_error.html" title="Ошибки криптографических операций (DH-обмен, AES, хэширование).">CryptoError</a></td><td>при сбое генерации ключевой пары. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Методы</h2>
+<a id="a21f8c73b4b6e727ed179c447569cb93b" name="a21f8c73b4b6e727ed179c447569cb93b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a21f8c73b4b6e727ed179c447569cb93b">&#9670;&#160;</a></span>compute_shared()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">CryptoPP::SecByteBlock stego::DiffieHellman::compute_shared </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>peer_public_hex</em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Вычисляет общий секрет с публичным ключом другого участника. </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">peer_public_hex</td><td>Публичный ключ собеседника в hex-виде. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Возвращает</dt><dd>Сырой общий секрет DH в виде защищённого блока байтов. </dd></dl>
+<dl class="exception"><dt>Исключения</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname"><a class="el" href="classstego_1_1_crypto_error.html" title="Ошибки криптографических операций (DH-обмен, AES, хэширование).">CryptoError</a></td><td>если hex некорректен или согласование не удалось. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="adac14e45337b758e84e32ab6f1178e8d" name="adac14e45337b758e84e32ab6f1178e8d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adac14e45337b758e84e32ab6f1178e8d">&#9670;&#160;</a></span>derive_aes_key()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">CryptoPP::SecByteBlock stego::DiffieHellman::derive_aes_key </td>
+          <td>(</td>
+          <td class="paramtype">const CryptoPP::SecByteBlock &amp;</td>          <td class="paramname"><span class="paramname"><em>shared</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Выводит 32-байтный ключ AES из общего секрета DH через SHA-256. </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">shared</td><td>Общий секрет, полученный из <a class="el" href="#a21f8c73b4b6e727ed179c447569cb93b" title="Вычисляет общий секрет с публичным ключом другого участника.">compute_shared()</a>. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Возвращает</dt><dd>Ключ длиной 32 байта для AES-256. </dd></dl>
+
+</div>
+</div>
+<a id="a0042e4d3bef94228d8d93aa2346fe1cd" name="a0042e4d3bef94228d8d93aa2346fe1cd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0042e4d3bef94228d8d93aa2346fe1cd">&#9670;&#160;</a></span>load_private()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void stego::DiffieHellman::load_private </td>
+          <td>(</td>
+          <td class="paramtype">const std::filesystem::path &amp;</td>          <td class="paramname"><span class="paramname"><em>path</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Загружает приватный ключ из файла и восстанавливает публичный. </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">path</td><td>Путь к файлу с приватным ключом в hex-виде. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="exception"><dt>Исключения</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname"><a class="el" href="classstego_1_1_crypto_error.html" title="Ошибки криптографических операций (DH-обмен, AES, хэширование).">CryptoError</a></td><td>если файл недоступен или содержит неверные данные. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a694c731c80bba8973cc003d8b7eba4b0" name="a694c731c80bba8973cc003d8b7eba4b0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a694c731c80bba8973cc003d8b7eba4b0">&#9670;&#160;</a></span>public_key_hex()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string stego::DiffieHellman::public_key_hex </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Возвращает публичный ключ участника в шестнадцатеричном виде. </p>
+<dl class="section return"><dt>Возвращает</dt><dd>Публичный ключ как строка hex-символов в верхнем регистре. </dd></dl>
+
+</div>
+</div>
+<a id="aac62d48190ab3558cc351539537dc751" name="aac62d48190ab3558cc351539537dc751"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aac62d48190ab3558cc351539537dc751">&#9670;&#160;</a></span>save_private()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void stego::DiffieHellman::save_private </td>
+          <td>(</td>
+          <td class="paramtype">const std::filesystem::path &amp;</td>          <td class="paramname"><span class="paramname"><em>path</em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Сохраняет приватный ключ участника в файл (hex, UTF-8). </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">path</td><td>Путь к файлу для записи приватного ключа. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="exception"><dt>Исключения</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname"><a class="el" href="classstego_1_1_crypto_error.html" title="Ошибки криптографических операций (DH-обмен, AES, хэширование).">CryptoError</a></td><td>если файл недоступен для записи. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<hr/>Объявления и описания членов классов находятся в файлах:<ul>
+<li>client/include/<a class="el" href="crypto_8hpp_source.html">crypto.hpp</a></li>
+<li>client/src/<a class="el" href="crypto_8cpp.html">crypto.cpp</a></li>
+</ul>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<div id="page-nav" class="page-nav-panel">
+<div id="page-nav-resize-handle"></div>
+<div id="page-nav-tree">
+<div id="page-nav-contents">
+</div><!-- page-nav-contents -->
+</div><!-- page-nav-tree -->
+</div><!-- page-nav -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="namespacestego.html">stego</a></li><li class="navelem"><a href="classstego_1_1_diffie_hellman.html">DiffieHellman</a></li>
+    <li class="footer">Создано системой <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.16.1 </li>
+  </ul>
+</div>
+</body>
+</html>

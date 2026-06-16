@@ -1,0 +1,15 @@
+PROJECT_NAME           = "Стеганография в тексте"
+PROJECT_BRIEF          = "DH + AES, шифртекст словами русского языка через WebSocket"
+OUTPUT_DIRECTORY       = docs
+OUTPUT_LANGUAGE        = Russian
+INPUT                  = client/include client/src server/include server/src
+INPUT_ENCODING         = UTF-8
+RECURSIVE              = YES
+FILE_PATTERNS          = *.hpp *.cpp
+EXTRACT_ALL            = YES
+EXTRACT_STATIC         = YES
+JAVADOC_AUTOBRIEF      = YES
+GENERATE_HTML          = YES
+GENERATE_LATEX         = NO
+QUIET                  = YES
+WARN_IF_UNDOCUMENTED   = NO
