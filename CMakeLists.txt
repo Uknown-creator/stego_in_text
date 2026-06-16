@@ -7,6 +7,7 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 
 enable_testing()
 
+find_package(Threads REQUIRED)
 find_package(cryptopp CONFIG REQUIRED)
 find_package(ixwebsocket CONFIG REQUIRED)
 find_package(nlohmann_json CONFIG REQUIRED)
