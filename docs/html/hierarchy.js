@@ -2,6 +2,8 @@ var hierarchy =
 [
     [ "stego::AesCipher", "classstego_1_1_aes_cipher.html", null ],
     [ "stego::DiffieHellman", "classstego_1_1_diffie_hellman.html", null ],
+    [ "stego::MessageBroker", "classstego_1_1_message_broker.html", null ],
+    [ "stego::QueuedMessage", "structstego_1_1_queued_message.html", null ],
     [ "std::runtime_error", null, [
       [ "stego::StegoError", "classstego_1_1_stego_error.html", [
         [ "stego::CliError", "classstego_1_1_cli_error.html", null ],
@@ -12,5 +14,6 @@ var hierarchy =
     ] ],
     [ "stego::StegoCodec", "classstego_1_1_stego_codec.html", null ],
     [ "stego::StoredMessage", "structstego_1_1_stored_message.html", null ],
-    [ "stego::WsClient", "classstego_1_1_ws_client.html", null ]
+    [ "stego::WsClient", "classstego_1_1_ws_client.html", null ],
+    [ "stego::WsServer", "classstego_1_1_ws_server.html", null ]
 ];

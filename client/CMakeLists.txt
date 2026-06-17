@@ -1,6 +1,3 @@
-# ── Клиент (участник 1) ──
-
-# Общая библиотека с прикладной логикой — её же тестируем.
 add_library(stego_client_lib
     src/crypto.cpp
     src/stego.cpp
@@ -13,11 +10,9 @@ target_link_libraries(stego_client_lib PUBLIC
     ixwebsocket::ixwebsocket
     nlohmann_json::nlohmann_json)
 
-# Исполняемый файл клиента.
 add_executable(client src/main.cpp)
 target_link_libraries(client PRIVATE stego_client_lib)
 
-# Тесты на doctest, запускаются через ctest.
 add_executable(client_tests
     tests/test_main.cpp
     tests/test_crypto.cpp

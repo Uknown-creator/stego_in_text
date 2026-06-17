@@ -10,6 +10,9 @@ var annotated_dup =
       [ "CliError", "classstego_1_1_cli_error.html", "classstego_1_1_cli_error" ],
       [ "StoredMessage", "structstego_1_1_stored_message.html", "structstego_1_1_stored_message" ],
       [ "WsClient", "classstego_1_1_ws_client.html", "classstego_1_1_ws_client" ],
-      [ "StegoCodec", "classstego_1_1_stego_codec.html", "classstego_1_1_stego_codec" ]
+      [ "StegoCodec", "classstego_1_1_stego_codec.html", "classstego_1_1_stego_codec" ],
+      [ "QueuedMessage", "structstego_1_1_queued_message.html", "structstego_1_1_queued_message" ],
+      [ "MessageBroker", "classstego_1_1_message_broker.html", "classstego_1_1_message_broker" ],
+      [ "WsServer", "classstego_1_1_ws_server.html", "classstego_1_1_ws_server" ]
     ] ]
 ];

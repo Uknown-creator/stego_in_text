@@ -93,7 +93,7 @@ $(function(){initNavTree('classstego_1_1_aes_cipher.html','','classstego_1_1_aes
 </div><!--header-->
 <div class="contents">
 
-<p>Симметричный шифр AES-256 в режиме GCM (аутентифицированное шифрование).  
+<p>Симметричный шифр AES-256-GCM. IV генерируется при каждом <a class="el" href="#afed8a81bdab8094676afa1e4c84c5da7" title="Шифрует данные ключом AES-256.">encrypt()</a>.  
  <a href="#details">Подробнее...</a></p>
 
 <p><code>#include &lt;<a class="el" href="crypto_8hpp_source.html">crypto.hpp</a>&gt;</code></p>
@@ -106,8 +106,7 @@ $(function(){initNavTree('classstego_1_1_aes_cipher.html','','classstego_1_1_aes
 <tr class="memdesc:af437d8171c68621f13290ae95e4607f2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Расшифровывает данные, зашифрованные методом <a class="el" href="#afed8a81bdab8094676afa1e4c84c5da7" title="Шифрует данные ключом AES-256.">encrypt()</a>.  <br /></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Подробное описание</h2>
-<div class="textblock"><p>Симметричный шифр AES-256 в режиме GCM (аутентифицированное шифрование). </p>
-<p>Вектор инициализации (IV) генерируется случайно при каждом вызове <a class="el" href="#afed8a81bdab8094676afa1e4c84c5da7" title="Шифрует данные ключом AES-256.">encrypt()</a> и помещается в начало результата, чтобы <a class="el" href="#af437d8171c68621f13290ae95e4607f2" title="Расшифровывает данные, зашифрованные методом encrypt().">decrypt()</a> мог его извлечь. </p>
+<div class="textblock"><p>Симметричный шифр AES-256-GCM. IV генерируется при каждом <a class="el" href="#afed8a81bdab8094676afa1e4c84c5da7" title="Шифрует данные ключом AES-256.">encrypt()</a>. </p>
 </div><a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Методы</h2>
 <a id="af437d8171c68621f13290ae95e4607f2" name="af437d8171c68621f13290ae95e4607f2"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#af437d8171c68621f13290ae95e4607f2">&#9670;&#160;</a></span>decrypt()</h2>

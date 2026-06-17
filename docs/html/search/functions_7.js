@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['public_5fkey_5fhex_0',['public_key_hex',['../classstego_1_1_diffie_hellman.html#a694c731c80bba8973cc003d8b7eba4b0',1,'stego::DiffieHellman']]]
+  ['networkerror_0',['NetworkError',['../classstego_1_1_network_error.html#a8fa0ffb526a913e72281bac5759429f1',1,'stego::NetworkError']]]
 ];

@@ -1,7 +1,9 @@
 var searchData=
 [
-  ['decode_0',['decode',['../classstego_1_1_stego_codec.html#a9d52a3864a02673c15e5ec1eda07ce59',1,'stego::StegoCodec']]],
-  ['decrypt_1',['decrypt',['../classstego_1_1_aes_cipher.html#af437d8171c68621f13290ae95e4607f2',1,'stego::AesCipher']]],
-  ['derive_5faes_5fkey_2',['derive_aes_key',['../classstego_1_1_diffie_hellman.html#adac14e45337b758e84e32ab6f1178e8d',1,'stego::DiffieHellman']]],
-  ['diffiehellman_3',['DiffieHellman',['../classstego_1_1_diffie_hellman.html',1,'stego::DiffieHellman'],['../classstego_1_1_diffie_hellman.html#ac61fef7e646093020f8d3b591580dd3a',1,'stego::DiffieHellman::DiffieHellman()']]]
+  ['clierror_0',['CliError',['../classstego_1_1_cli_error.html',1,'stego::CliError'],['../classstego_1_1_cli_error.html#a9c239aadeeb3895436426ccfdee3ed43',1,'stego::CliError::CliError()']]],
+  ['compute_5fshared_1',['compute_shared',['../classstego_1_1_diffie_hellman.html#a21f8c73b4b6e727ed179c447569cb93b',1,'stego::DiffieHellman']]],
+  ['connect_2',['connect',['../classstego_1_1_ws_client.html#ad75e515d3395a5186783a1ee54db67bf',1,'stego::WsClient']]],
+  ['crypto_2ecpp_3',['crypto.cpp',['../crypto_8cpp.html',1,'']]],
+  ['crypto_2ehpp_4',['crypto.hpp',['../crypto_8hpp.html',1,'']]],
+  ['cryptoerror_5',['CryptoError',['../classstego_1_1_crypto_error.html',1,'stego::CryptoError'],['../classstego_1_1_crypto_error.html#aa71ea3943ec9ed6c544d3727b513253d',1,'stego::CryptoError::CryptoError()']]]
 ];

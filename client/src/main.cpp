@@ -16,11 +16,6 @@ namespace {
 
 namespace fs = std::filesystem;
 
-/// @brief Разбирает аргументы вида "--ключ значение" в ассоциативный массив.
-/// @param argc Число аргументов командной строки.
-/// @param argv Массив аргументов командной строки.
-/// @return Отображение имени параметра (без префикса "--") в его значение.
-/// @throws stego::CliError при непарном или некорректном аргументе.
 std::map<std::string, std::string> parse_args(int argc, char** argv) {
     std::map<std::string, std::string> args;
     for (int i = 1; i < argc; ++i) {
@@ -36,7 +31,6 @@ std::map<std::string, std::string> parse_args(int argc, char** argv) {
     return args;
 }
 
-/// @brief Возвращает значение обязательного параметра либо бросает исключение.
 const std::string& require(const std::map<std::string, std::string>& args,
                            const std::string& name) {
     auto it = args.find(name);
@@ -46,7 +40,6 @@ const std::string& require(const std::map<std::string, std::string>& args,
     return it->second;
 }
 
-/// @brief Читает файл целиком в вектор байтов.
 std::vector<std::uint8_t> read_file(const fs::path& path) {
     std::ifstream in(path, std::ios::binary);
     if (!in) {
@@ -56,7 +49,6 @@ std::vector<std::uint8_t> read_file(const fs::path& path) {
                                      std::istreambuf_iterator<char>());
 }
 
-/// @brief Записывает байты в файл (двоичный режим).
 void write_file(const fs::path& path, const std::vector<std::uint8_t>& data) {
     std::ofstream out(path, std::ios::binary | std::ios::trunc);
     if (!out) {
@@ -65,7 +57,6 @@ void write_file(const fs::path& path, const std::vector<std::uint8_t>& data) {
     out.write(reinterpret_cast<const char*>(data.data()), static_cast<std::streamsize>(data.size()));
 }
 
-/// @brief Загружает ключ DH из файла либо генерирует новый и сохраняет его.
 stego::DiffieHellman load_or_create_key(const fs::path& keyfile) {
     stego::DiffieHellman dh;
     if (fs::exists(keyfile)) {
@@ -76,7 +67,7 @@ stego::DiffieHellman load_or_create_key(const fs::path& keyfile) {
     return dh;
 }
 
-/// @brief Сценарий отправки: шифрует файл и публикует его на сервере словами.
+// Шифрует файл и публикует его на сервере в виде слов.
 void run_send(const std::map<std::string, std::string>& args) {
     const stego::DiffieHellman dh = load_or_create_key(require(args, "keyfile"));
     const stego::StegoCodec codec(require(args, "dictionary"));
@@ -98,7 +89,7 @@ void run_send(const std::map<std::string, std::string>& args) {
     std::cout << "Сообщение отправлено получателю " << require(args, "to") << ".\n";
 }
 
-/// @brief Сценарий получения: забирает сообщения, декодирует и расшифровывает.
+// Забирает сообщения с сервера, декодирует и расшифровывает их.
 void run_receive(const std::map<std::string, std::string>& args) {
     const stego::DiffieHellman dh = load_or_create_key(require(args, "keyfile"));
     const stego::StegoCodec codec(require(args, "dictionary"));

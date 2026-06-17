@@ -8,7 +8,7 @@
 namespace stego {
 namespace {
 
-constexpr std::size_t kAlphabetSize = 256;  // По одному слову на значение байта.
+constexpr std::size_t kAlphabetSize = 256;
 
 }  // namespace
 

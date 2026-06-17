@@ -25,11 +25,10 @@ constexpr char kPrimeHex[] =
     "E39E772C180E86039B2783A2EC07A28FB5C55DF06F4C52C9DE2BCBF695581718"
     "3995497CEA956AE515D2261898FA051015728E5A8AACAA68FFFFFFFFFFFFFFFF";
 
-constexpr std::size_t kAesKeySize = 32;  // AES-256.
-constexpr std::size_t kIvSize = 12;      // Рекомендованная длина IV для GCM.
-constexpr std::size_t kTagSize = 16;     // Длина тега аутентификации GCM.
+constexpr std::size_t kAesKeySize = 32;
+constexpr std::size_t kIvSize = 12;
+constexpr std::size_t kTagSize = 16;
 
-/// @brief Переводит массив байтов в строку hex-символов верхнего регистра.
 std::string to_hex(const std::uint8_t* data, std::size_t size) {
     static constexpr char kDigits[] = "0123456789ABCDEF";
     std::string out;
@@ -41,7 +40,6 @@ std::string to_hex(const std::uint8_t* data, std::size_t size) {
     return out;
 }
 
-/// @brief Переводит один hex-символ в числовое значение 0..15.
 int hex_value(char c) {
     if (c >= '0' && c <= '9') return c - '0';
     if (c >= 'a' && c <= 'f') return c - 'a' + 10;
@@ -49,7 +47,6 @@ int hex_value(char c) {
     throw CryptoError("Недопустимый символ в hex-строке");
 }
 
-/// @brief Разбирает hex-строку чётной длины в массив байтов.
 std::vector<std::uint8_t> from_hex(const std::string& hex) {
     if (hex.size() % 2 != 0) {
         throw CryptoError("Нечётная длина hex-строки");

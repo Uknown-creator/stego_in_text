@@ -1,4 +1,6 @@
 var searchData=
 [
-  ['public_5fkey_5fhex_0',['public_key_hex',['../classstego_1_1_diffie_hellman.html#a694c731c80bba8973cc003d8b7eba4b0',1,'stego::DiffieHellman']]]
+  ['main_0',['main',['../client_2src_2main_8cpp.html#a3c04138a5bfe5d72780bb7e82a18e627',1,'main(int argc, char **argv):&#160;main.cpp'],['../server_2src_2main_8cpp.html#a3c04138a5bfe5d72780bb7e82a18e627',1,'main(int argc, char **argv):&#160;main.cpp']]],
+  ['main_2ecpp_1',['main.cpp',['../client_2src_2main_8cpp.html',1,'(Глобальное пространство имён)'],['../server_2src_2main_8cpp.html',1,'(Глобальное пространство имён)']]],
+  ['messagebroker_2',['MessageBroker',['../classstego_1_1_message_broker.html',1,'stego']]]
 ];

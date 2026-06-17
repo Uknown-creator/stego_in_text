@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['wsclient_0',['WsClient',['../classstego_1_1_ws_client.html',1,'stego']]]
+  ['queuedmessage_0',['QueuedMessage',['../structstego_1_1_queued_message.html',1,'stego']]]
 ];

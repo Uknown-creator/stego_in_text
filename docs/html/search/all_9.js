@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['register_5fkey_0',['register_key',['../classstego_1_1_ws_client.html#aba06c33c3954490e5cdf8426074ba727',1,'stego::WsClient']]],
-  ['request_5fpublic_5fkey_1',['request_public_key',['../classstego_1_1_ws_client.html#a559408de5a29e10154a77603eec6f1ed',1,'stego::WsClient']]]
+  ['net_5fclient_2ecpp_0',['net_client.cpp',['../net__client_8cpp.html',1,'']]],
+  ['net_5fclient_2ehpp_1',['net_client.hpp',['../net__client_8hpp.html',1,'']]],
+  ['networkerror_2',['NetworkError',['../classstego_1_1_network_error.html',1,'stego::NetworkError'],['../classstego_1_1_network_error.html#a8fa0ffb526a913e72281bac5759429f1',1,'stego::NetworkError::NetworkError()']]]
 ];
