@@ -7,6 +7,7 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 
 enable_testing()
 
+find_package(Threads REQUIRED)
 find_package(cryptopp CONFIG REQUIRED)
 find_package(ixwebsocket CONFIG REQUIRED)
 find_package(nlohmann_json CONFIG REQUIRED)
@@ -14,5 +15,4 @@ find_package(doctest CONFIG REQUIRED)
 
 add_subdirectory(client)
 
-# После добавления каталога server/ с собственным CMakeLists.txt раскомментируйте строку ниже:
-# add_subdirectory(server)
+add_subdirectory(server)
