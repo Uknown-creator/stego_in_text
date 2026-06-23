@@ -4,8 +4,6 @@
 #include <ixwebsocket/IXWebSocket.h>
 
 #include <chrono>
-#include <condition_variable>
-#include <deque>
 #include <mutex>
 #include <string>
 #include <vector>
@@ -28,7 +26,7 @@ class WsClient {
     /// @param timeout Максимальное время ожидания ответа сервера.
     explicit WsClient(std::chrono::milliseconds timeout = std::chrono::seconds(10));
 
-    /// @brief Останавливает соединение до разрушения примитивов синхронизации.
+    /// @brief Останавливает соединение перед разрушением объекта.
     ~WsClient();
 
     /// @brief Создаёт соединение с сервером и дожидается его открытия.
@@ -62,22 +60,20 @@ class WsClient {
     std::vector<StoredMessage> fetch(const std::string& id);
 
    private:
-    /// @brief Отправляет JSON-запрос и блокирующе ожидает JSON-ответ.
-    /// @param payload Сериализованный JSON-запрос.
+    /// @brief Отправляет JSON-запрос и ждёт JSON-ответ от сервера.
+    /// @param request Сериализованный JSON-запрос.
     /// @return Текст ответа сервера.
     /// @throws NetworkError при таймауте или закрытии соединения.
-    std::string send_and_wait(const std::string& payload);
+    std::string send_and_wait(const std::string& request);
 
     std::chrono::milliseconds timeout_;  ///< Таймаут ожидания ответа.
     std::mutex mutex_;                   ///< Защищает поля состояния ниже.
-    std::condition_variable cv_;         ///< Пробуждение при событии сети.
-    std::deque<std::string> inbox_;      ///< Очередь полученных сообщений.
+    std::string response_;               ///< Последний ответ сервера.
+    bool has_response_ = false;          ///< Получен ли новый ответ.
     bool open_ = false;                  ///< Признак установленного соединения.
     bool closed_ = false;                ///< Признак закрытия/ошибки соединения.
 
-    // Объявлен последним: при разрушении останавливается первым, поэтому его
-    // фоновый поток не обращается к уже уничтоженным mutex_/cv_ выше.
-    ix::WebSocket socket_;  ///< Низкоуровневый WebSocket.
+    ix::WebSocket socket_;  ///< Низкоуровневый WebSocket (объявлен последним).
 };
 
 }  // namespace stego

@@ -19,21 +19,14 @@ StegoCodec::StegoCodec(const std::filesystem::path& dictionary_path) {
     }
 
     std::string word;
-    while (std::getline(in, word)) {
-        // Срезаем возможный символ возврата каретки от файлов с CRLF.
-        if (!word.empty() && word.back() == '\r') {
-            word.pop_back();
-        }
-        if (word.empty()) {
-            continue;
-        }
+    while (in >> word) {
         if (words_.size() >= kAlphabetSize) {
             break;
         }
-        if (index_.find(word) != index_.end()) {
+        if (index_.count(word) > 0) {
             throw StegoCodecError("Повторяющееся слово в словаре: " + word);
         }
-        index_.emplace(word, static_cast<std::uint8_t>(words_.size()));
+        index_[word] = static_cast<std::uint8_t>(words_.size());
         words_.push_back(word);
     }
 
@@ -43,14 +36,14 @@ StegoCodec::StegoCodec(const std::filesystem::path& dictionary_path) {
 }
 
 std::string StegoCodec::encode(const std::vector<std::uint8_t>& data) const {
-    std::ostringstream out;
+    std::string result;
     for (std::size_t i = 0; i < data.size(); ++i) {
-        if (i != 0) {
-            out << ' ';
+        if (i > 0) {
+            result += " ";
         }
-        out << words_[data[i]];
+        result += words_[data[i]];
     }
-    return out.str();
+    return result;
 }
 
 std::vector<std::uint8_t> StegoCodec::decode(const std::string& text) const {
@@ -58,11 +51,10 @@ std::vector<std::uint8_t> StegoCodec::decode(const std::string& text) const {
     std::vector<std::uint8_t> data;
     std::string word;
     while (in >> word) {
-        auto it = index_.find(word);
-        if (it == index_.end()) {
+        if (index_.count(word) == 0) {
             throw StegoCodecError("Слово отсутствует в словаре: " + word);
         }
-        data.push_back(it->second);
+        data.push_back(index_.at(word));
     }
     return data;
 }

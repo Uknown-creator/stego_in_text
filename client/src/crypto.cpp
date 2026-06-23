@@ -6,15 +6,17 @@
 #include <cryptopp/osrng.h>
 #include <cryptopp/sha.h>
 
-#include <algorithm>
 #include <fstream>
+#include <iomanip>
+#include <sstream>
+#include <string>
+#include <vector>
 
 #include "errors.hpp"
 
 namespace stego {
 namespace {
 
-// Простое число MODP-группы №14 (2048 бит) из RFC 3526; генератор g = 2.
 constexpr char kPrimeHex[] =
     "FFFFFFFFFFFFFFFFC90FDAA22168C234C4C6628B80DC1CD129024E088A67CC74"
     "020BBEA63B139B22514A08798E3404DDEF9519B3CD3A431B302B0A6DF25F1437"
@@ -29,34 +31,30 @@ constexpr std::size_t kAesKeySize = 32;
 constexpr std::size_t kIvSize = 12;
 constexpr std::size_t kTagSize = 16;
 
-std::string to_hex(const std::uint8_t* data, std::size_t size) {
-    static constexpr char kDigits[] = "0123456789ABCDEF";
-    std::string out;
-    out.reserve(size * 2);
-    for (std::size_t i = 0; i < size; ++i) {
-        out.push_back(kDigits[data[i] >> 4]);
-        out.push_back(kDigits[data[i] & 0x0F]);
+std::string to_hex(const CryptoPP::SecByteBlock& bytes) {
+    std::ostringstream out;
+    out << std::hex << std::setfill('0');
+    for (std::size_t i = 0; i < bytes.size(); ++i) {
+        out << std::setw(2) << static_cast<int>(bytes[i]);
     }
-    return out;
-}
-
-int hex_value(char c) {
-    if (c >= '0' && c <= '9') return c - '0';
-    if (c >= 'a' && c <= 'f') return c - 'a' + 10;
-    if (c >= 'A' && c <= 'F') return c - 'A' + 10;
-    throw CryptoError("Недопустимый символ в hex-строке");
+    return out.str();
 }
 
 std::vector<std::uint8_t> from_hex(const std::string& hex) {
     if (hex.size() % 2 != 0) {
         throw CryptoError("Нечётная длина hex-строки");
     }
-    std::vector<std::uint8_t> out;
-    out.reserve(hex.size() / 2);
+    std::vector<std::uint8_t> bytes;
     for (std::size_t i = 0; i < hex.size(); i += 2) {
-        out.push_back(static_cast<std::uint8_t>((hex_value(hex[i]) << 4) | hex_value(hex[i + 1])));
+        std::string pair = hex.substr(i, 2);
+        try {
+            int value = std::stoi(pair, nullptr, 16);
+            bytes.push_back(static_cast<std::uint8_t>(value));
+        } catch (const std::exception&) {
+            throw CryptoError("Недопустимый символ в hex-строке");
+        }
     }
-    return out;
+    return bytes;
 }
 
 }  // namespace
@@ -67,21 +65,16 @@ DiffieHellman::DiffieHellman() {
         CryptoPP::Integer g(2L);
         dh_.AccessGroupParameters().Initialize(p, g);
 
-        // borrowed: идиома генерации ключевой пары DH из Crypto++ wiki
-        // (https://www.cryptopp.com/wiki/Diffie-Hellman).
         CryptoPP::AutoSeededRandomPool rng;
         private_ = CryptoPP::SecByteBlock(dh_.PrivateKeyLength());
         public_ = CryptoPP::SecByteBlock(dh_.PublicKeyLength());
         dh_.GenerateKeyPair(rng, private_, public_);
-        // end borrowed
     } catch (const CryptoPP::Exception& e) {
         throw CryptoError(std::string("Не удалось создать ключи DH: ") + e.what());
     }
 }
 
-std::string DiffieHellman::public_key_hex() const {
-    return to_hex(public_.BytePtr(), public_.size());
-}
+std::string DiffieHellman::public_key_hex() const { return to_hex(public_); }
 
 CryptoPP::SecByteBlock DiffieHellman::compute_shared(const std::string& peer_public_hex) const {
     std::vector<std::uint8_t> peer_bytes = from_hex(peer_public_hex);
@@ -98,7 +91,7 @@ void DiffieHellman::save_private(const std::filesystem::path& path) const {
     if (!out) {
         throw CryptoError("Не удалось открыть файл ключа для записи: " + path.string());
     }
-    out << to_hex(private_.BytePtr(), private_.size());
+    out << to_hex(private_);
     if (!out) {
         throw CryptoError("Ошибка записи файла ключа: " + path.string());
     }
@@ -114,7 +107,6 @@ void DiffieHellman::load_private(const std::filesystem::path& path) {
     std::vector<std::uint8_t> bytes = from_hex(hex);
     private_ = CryptoPP::SecByteBlock(bytes.data(), bytes.size());
 
-    // Публичный ключ восстанавливается как g^private mod p.
     CryptoPP::Integer x(private_.BytePtr(), private_.size());
     CryptoPP::Integer y = dh_.GetGroupParameters().ExponentiateBase(x);
     public_ = CryptoPP::SecByteBlock(dh_.PublicKeyLength());
@@ -135,18 +127,23 @@ std::vector<std::uint8_t> AesCipher::encrypt(const std::vector<std::uint8_t>& pl
     }
     try {
         CryptoPP::AutoSeededRandomPool rng;
-        CryptoPP::SecByteBlock iv(kIvSize);
-        rng.GenerateBlock(iv, iv.size());
+        std::vector<std::uint8_t> iv(kIvSize);
+        rng.GenerateBlock(iv.data(), iv.size());
 
         CryptoPP::GCM<CryptoPP::AES>::Encryption enc;
-        enc.SetKeyWithIV(key, key.size(), iv, iv.size());
+        enc.SetKeyWithIV(key, key.size(), iv.data(), iv.size());
 
-        std::vector<std::uint8_t> out(kIvSize + plain.size() + kTagSize);
-        std::copy(iv.BytePtr(), iv.BytePtr() + iv.size(), out.begin());
-        enc.EncryptAndAuthenticate(out.data() + kIvSize, out.data() + kIvSize + plain.size(),
-                                   kTagSize, iv, static_cast<int>(iv.size()), nullptr, 0,
-                                   plain.data(), plain.size());
-        return out;
+        std::vector<std::uint8_t> ciphertext(plain.size());
+        std::vector<std::uint8_t> tag(kTagSize);
+        enc.EncryptAndAuthenticate(ciphertext.data(), tag.data(), kTagSize, iv.data(),
+                                   static_cast<int>(iv.size()), nullptr, 0, plain.data(),
+                                   plain.size());
+
+        std::vector<std::uint8_t> result;
+        result.insert(result.end(), iv.begin(), iv.end());
+        result.insert(result.end(), ciphertext.begin(), ciphertext.end());
+        result.insert(result.end(), tag.begin(), tag.end());
+        return result;
     } catch (const CryptoPP::Exception& e) {
         throw CryptoError(std::string("Ошибка шифрования AES-GCM: ") + e.what());
     }
@@ -161,21 +158,23 @@ std::vector<std::uint8_t> AesCipher::decrypt(const std::vector<std::uint8_t>& ci
         throw CryptoError("Шифртекст слишком короткий");
     }
     try {
-        const std::size_t cipher_len = cipher.size() - kIvSize - kTagSize;
-        const std::uint8_t* iv = cipher.data();
-        const std::uint8_t* body = cipher.data() + kIvSize;
-        const std::uint8_t* tag = cipher.data() + kIvSize + cipher_len;
+        std::size_t body_size = cipher.size() - kIvSize - kTagSize;
+        std::vector<std::uint8_t> iv(cipher.begin(), cipher.begin() + kIvSize);
+        std::vector<std::uint8_t> body(cipher.begin() + kIvSize,
+                                       cipher.begin() + kIvSize + body_size);
+        std::vector<std::uint8_t> tag(cipher.end() - kTagSize, cipher.end());
 
         CryptoPP::GCM<CryptoPP::AES>::Decryption dec;
-        dec.SetKeyWithIV(key, key.size(), iv, kIvSize);
+        dec.SetKeyWithIV(key, key.size(), iv.data(), iv.size());
 
-        std::vector<std::uint8_t> out(cipher_len);
-        const bool ok = dec.DecryptAndVerify(out.data(), tag, kTagSize, iv, kIvSize, nullptr, 0,
-                                             body, cipher_len);
+        std::vector<std::uint8_t> result(body_size);
+        bool ok = dec.DecryptAndVerify(result.data(), tag.data(), kTagSize, iv.data(),
+                                       static_cast<int>(iv.size()), nullptr, 0, body.data(),
+                                       body.size());
         if (!ok) {
             throw CryptoError("Проверка подлинности не пройдена (неверный ключ или данные)");
         }
-        return out;
+        return result;
     } catch (const CryptoPP::Exception& e) {
         throw CryptoError(std::string("Ошибка расшифрования AES-GCM: ") + e.what());
     }
